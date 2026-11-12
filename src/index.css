@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+/* Light theme colors */
+:root {
+  --background: oklch(0.99 0.004 275);
+  --foreground: oklch(0.21 0.03 275);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.21 0.03 275);
+  --primary: oklch(0.55 0.22 278);
+  --primary-foreground: oklch(0.98 0.01 278);
+  --accent: oklch(0.65 0.2 330);
+  --muted: oklch(0.96 0.01 275);
+  --muted-foreground: oklch(0.52 0.03 275);
+  --border: oklch(0.91 0.012 275);
+  --ring: oklch(0.55 0.22 278);
+  --destructive: oklch(0.58 0.22 25);
+  --success: oklch(0.6 0.16 150);
+}
+
+/* Dark theme colors (follows the system setting) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: oklch(0.16 0.02 278);
+    --foreground: oklch(0.96 0.01 278);
+    --card: oklch(0.21 0.025 278);
+    --card-foreground: oklch(0.96 0.01 278);
+    --primary: oklch(0.68 0.19 278);
+    --primary-foreground: oklch(0.16 0.02 278);
+    --accent: oklch(0.74 0.17 330);
+    --muted: oklch(0.25 0.025 278);
+    --muted-foreground: oklch(0.72 0.03 278);
+    --border: oklch(0.3 0.03 278);
+    --ring: oklch(0.68 0.19 278);
+    --destructive: oklch(0.68 0.2 25);
+    --success: oklch(0.72 0.16 150);
+  }
+}
+
+/* Expose the colors as Tailwind classes: bg-primary, text-foreground, border-border, ... */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --color-success: var(--success);
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+/* Toast colors use the app theme (react-toastify reads these variables) */
+.Toastify {
+  --toastify-font-family: inherit;
+  --toastify-toast-bd-radius: 0.5rem;
+  --toastify-color-light: var(--card);
+  --toastify-color-dark: var(--card);
+  --toastify-text-color-light: var(--card-foreground);
+  --toastify-text-color-dark: var(--card-foreground);
+  --toastify-color-info: var(--primary);
+  --toastify-color-success: var(--success);
+  --toastify-color-error: var(--destructive);
+  --toastify-color-progress-light: var(--primary);
+  --toastify-color-progress-dark: var(--primary);
+}
